@@ -5,8 +5,11 @@
 #include <cassert>
 #include <cerrno>
 #include <cstring>
+#include <time.h>
+#include <stdio.h>
 #include "Frame.h"
 #include "Font.h"
+#include <string>
 
 typedef unsigned char byte;
 
@@ -51,11 +54,23 @@ int main(int argc, char * argv[]) {
 	for (int i = 0; i < num_frames; ++i) {
 		frame.clear();
 
-		// Convert elapsed seconds to a string.
-		stringstream elapsedSeconds;
-		elapsedSeconds << (int) (i / frames_per_second);
+		time_t timev; //time_t to find the current time
+		struct tm * current_time;
+		char a[4];
 
-		font.draw(elapsedSeconds.str(), 50, 30);
+		time(&timev);
+		current_time = localtime(&timev);
+	
+		// Convert time into string
+		stringstream clocktime;
+		strftime(a, 100, "%I%M", current_time); //uses time.h to get the current time in a clocks format	
+		string str;
+		for(int j = 0; j < 4; j++)
+			str+=a[j];
+		clocktime << str;
+		cout << clocktime.str() << endl;
+
+		font.draw(clocktime.str(), 50, 30);
 
 		frame.write(pipe);
 	}
