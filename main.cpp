@@ -68,7 +68,6 @@ int main(int argc, char * argv[]) {
 		for(int j = 0; j < 5; j++)
 			str+=a[j];
 		clocktime << str;
-		cout << clocktime.str() << endl;
 
 		font.draw(clocktime.str(), 50, 30);
 
