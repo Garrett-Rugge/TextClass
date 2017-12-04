@@ -56,16 +56,16 @@ int main(int argc, char * argv[]) {
 
 		time_t timev; //time_t to find the current time
 		struct tm * current_time;
-		char a[4];
+		char a[10];
 
 		time(&timev);
 		current_time = localtime(&timev);
 	
 		// Convert time into string
 		stringstream clocktime;
-		strftime(a, 100, "%I%M", current_time); //uses time.h to get the current time in a clocks format	
+		strftime(a, 100, "%I:%M", current_time); //uses time.h to get the current time in a clocks format	
 		string str;
-		for(int j = 0; j < 4; j++)
+		for(int j = 0; j < 5; j++)
 			str+=a[j];
 		clocktime << str;
 		cout << clocktime.str() << endl;
