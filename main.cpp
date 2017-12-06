@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include "Frame.h"
 #include "Font.h"
-#include <string>
 
 typedef unsigned char byte;
 
@@ -56,7 +55,7 @@ int main(int argc, char * argv[]) {
 
 		time_t timev; //time_t to find the current time
 		struct tm * current_time;
-		char a[10];
+		char a[5];
 
 		time(&timev);
 		current_time = localtime(&timev);
@@ -64,11 +63,7 @@ int main(int argc, char * argv[]) {
 		// Convert time into string
 		stringstream clocktime;
 		strftime(a, 100, "%I:%M", current_time); //uses time.h to get the current time in a clocks format	
-		string str;
-		for(int j = 0; j < 5; j++)
-			str+=a[j];
-		clocktime << str;
-		cout << clocktime.str() << endl;
+		clocktime << a;
 
 		font.draw(clocktime.str(), 50, 30);
 
