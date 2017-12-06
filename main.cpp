@@ -64,10 +64,6 @@ int main(int argc, char * argv[]) {
 		stringstream clocktime;
 		strftime(a, 100, "%I:%M", current_time); //uses time.h to get the current time in a clocks format	
 		clocktime << a;
-		string str;
-		for(int j = 0; j < 5; j++)
-			str+=a[j];
-		clocktime << str;
 
 		font.draw(clocktime.str(), 50, 30);
 
