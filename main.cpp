@@ -63,7 +63,14 @@ int main(int argc, char * argv[]) {
 		// Convert time into string
 		stringstream clocktime;
 		strftime(a, 100, "%I:%M", current_time); //uses time.h to get the current time in a clocks format	
+<<<<<<< HEAD
 		clocktime << a;
+=======
+		string str;
+		for(int j = 0; j < 5; j++)
+			str+=a[j];
+		clocktime << str;
+>>>>>>> fd5edd3134920315701ebff13cf3f88d0e5fc04c
 
 		font.draw(clocktime.str(), 50, 30);
 
